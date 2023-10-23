@@ -45,7 +45,7 @@ for lib in ${runtime_libs[@]};do
 done
 
 for lib in ${qt_libs[@]};do
-    cp -n $qtlib_dir'/'$lib $deploy_folder
+	[ ! -f "$deploy_folder/$lib" ] && cp -n $qtlib_dir'/'$lib $deploy_folder
 done
 
 for lib in ${third_party_libs[@]};do
