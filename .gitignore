@@ -1,3 +1,19 @@
+# Dictionary files
+index.aff
+index.dic
+
+object_script.nixnote2.Debug
+object_script.nixnote2.Release
+
+# downloaded DLL files
+winlib/
+
+# deploy folder
+deploy/
+
+# generated resource
+nixnote2_resource.rc
+
 # Compiled Object files
 *.slo
 *.lo
