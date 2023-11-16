@@ -31,7 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef _WIN32
 
 #include <cxxabi.h>
+
+#ifndef __CYGWIN__
 #include <execinfo.h>
+#endif
+
 #include <pwd.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -1251,7 +1255,7 @@ QString Global::systemNotifier() {
 
 void Global::stackDump(int max) {
 // Windows Check
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
 
     void *array[30];
     size_t size;

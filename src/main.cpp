@@ -32,7 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QSharedMemory>
 
 // Windows Check
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
 
 #include <execinfo.h>
 
@@ -69,7 +69,7 @@ extern Global global;
 //*********************************************************************
 void fault_handler(int sig) {
 // Windows Check
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
     void *array[30];
     size_t size;
 
@@ -80,7 +80,7 @@ void fault_handler(int sig) {
     // print out all the frames to stderr
     fprintf(stderr, "Error: signal %d:\n", sig);
 // Windows Check
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
     backtrace_symbols_fd(array, size, 2);
 #endif // End Windows check
     if (w != NULL) {

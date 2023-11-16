@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "src/global.h"
 
 // Windows Check
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
 #include <execinfo.h>
 #endif // End windows check
 

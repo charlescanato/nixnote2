@@ -82,7 +82,7 @@ void ReplyFetcher::start(
 #elif QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
     QObject::connect(
         m_pReply.get(),
-        qOverload<QNetworkReply::NetworkError>(&QNetworkReply::error),
+        QOverload<QNetworkReply::NetworkError>::of(&QNetworkReply::error),
         this,
         &ReplyFetcher::onError);
 #else

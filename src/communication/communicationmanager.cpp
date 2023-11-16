@@ -23,7 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "src/global.h"
 
 // Windows Check
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
 #include <execinfo.h>
 #endif  // end windows check
 
@@ -45,7 +45,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>
+
+#ifndef __CYGWIN__
 #include <execinfo.h>
+#endif
 
 #include <curl/curl.h>
 #include <curl/easy.h>
@@ -535,7 +538,7 @@ void CommunicationManager::reportError(
     QLOG_DEBUG() << "reportError()"
                  << " timestamp=" << QDateTime::currentMSecsSinceEpoch();
 
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
     // non Windows only
     void *array[30];
     size_t size;

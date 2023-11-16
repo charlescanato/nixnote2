@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <QDebug>
 
 // Windows Check
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
 #include <execinfo.h>
 #endif // End windows check
 
@@ -52,7 +52,7 @@ bool Application::notify(QObject *receiver_, QEvent *event_)
         QLOG_ERROR() << "std::exception was caught: " << ex.what();
 
 // Windows Check
-#ifndef _WIN32
+#if !defined(_WIN32) && !defined(__CYGWIN__)
         void *array[30];
         size_t size;
 
